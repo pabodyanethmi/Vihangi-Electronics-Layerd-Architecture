@@ -3,33 +3,34 @@ package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 import lk.ijse.vihangielectronics_ijse_76.dao.custom.CustomerDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.CustomerDto;
+import lk.ijse.vihangielectronics_ijse_76.entity.Customer;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerDAOImpl implements CustomerDAO {
-    public boolean save(CustomerDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Customer (customerId, name, contact, email, address) VALUES (?,?,?,?,?)";
         return CrudUtil.execute(
                 sql,
-                dto.getCustomerId(),
-                dto.getName(),
-                dto.getContact(),
-                dto.getEmail(),
-                dto.getAddress()
+                customer.getCustomerId(),
+                customer.getName(),
+                customer.getContact(),
+                customer.getEmail(),
+                customer.getAddress()
         );
     }
 
-    public boolean update(CustomerDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(Customer customer) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Customer SET name=?, contact=?, email=?, address=? WHERE customerId=?";
         return CrudUtil.execute(
                 sql,
-                dto.getName(),
-                dto.getContact(),
-                dto.getEmail(),
-                dto.getAddress(),
-                dto.getCustomerId()
+                customer.getName(),
+                customer.getContact(),
+                customer.getEmail(),
+                customer.getAddress(),
+                customer.getCustomerId()
         );
     }
 
@@ -48,13 +49,13 @@ public class CustomerDAOImpl implements CustomerDAO {
         return null;
     }
 
-    public ArrayList<CustomerDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Customer> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Customer";
         ResultSet rs = CrudUtil.execute(sql);
 
-        ArrayList<CustomerDto> customer = new ArrayList<>();
+        ArrayList<Customer> customer = new ArrayList<>();
         while (rs.next()) {
-            customer.add(new CustomerDto(
+            customer.add(new Customer(
                     rs.getString("customerId"),
                     rs.getString("name"),
                     rs.getString("contact"),
@@ -65,12 +66,12 @@ public class CustomerDAOImpl implements CustomerDAO {
         return customer;
     }
 
-    public CustomerDto search(String id) throws SQLException, ClassNotFoundException {
+    public Customer search(String id) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Customer WHERE customerId=?";
         ResultSet rs = CrudUtil.execute(sql, id);
 
         if (rs.next()) {
-            return new CustomerDto(
+            return new Customer(
                     rs.getString("customerId"),
                     rs.getString("name"),
                     rs.getString("contact"),

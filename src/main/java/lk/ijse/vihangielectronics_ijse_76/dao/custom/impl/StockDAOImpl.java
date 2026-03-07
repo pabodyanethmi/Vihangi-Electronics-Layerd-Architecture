@@ -3,13 +3,14 @@ package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 import lk.ijse.vihangielectronics_ijse_76.dao.custom.StockDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.StockDto;
+import lk.ijse.vihangielectronics_ijse_76.entity.Stock;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StockDAOImpl implements StockDAO {
-    public boolean save(StockDto stock) throws SQLException, ClassNotFoundException {
+    public boolean save(Stock stock) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Stock (productId, stockQuantity) VALUES (?,?)";
         return CrudUtil.execute(
                 sql,
@@ -18,7 +19,7 @@ public class StockDAOImpl implements StockDAO {
         );
     }
 
-    public boolean update(StockDto stock) throws SQLException, ClassNotFoundException {
+    public boolean update(Stock stock) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Stock SET stockQuantity=? WHERE productId=?";
         return CrudUtil.execute(
                 sql,
@@ -32,12 +33,12 @@ public class StockDAOImpl implements StockDAO {
         return CrudUtil.execute(sql, productId);
     }
 
-    public StockDto search(String productId) throws SQLException, ClassNotFoundException {
+    public Stock search(String productId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Stock WHERE productId=?";
         ResultSet rs = CrudUtil.execute(sql, productId);
 
         if (rs.next()) {
-            return new StockDto(
+            return new Stock(
                     rs.getInt("stockId"),
                     rs.getString("productId"),
                     rs.getInt("stockQuantity")
@@ -45,14 +46,14 @@ public class StockDAOImpl implements StockDAO {
         }
         return null;
     }
-    public ArrayList<StockDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Stock> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Stock ORDER BY stockId DESC";
         ResultSet rs = CrudUtil.execute(sql);
 
-        ArrayList<StockDto> stockList = new ArrayList<>();
+        ArrayList<Stock> stockList = new ArrayList<>();
 
         while (rs.next()) {
-            StockDto dto = new StockDto(
+            Stock dto = new Stock(
                     rs.getInt("stockId"),
                     rs.getString("productId"),
                     rs.getInt("stockQuantity")

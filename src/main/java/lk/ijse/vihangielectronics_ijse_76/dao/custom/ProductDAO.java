@@ -1,11 +1,13 @@
 package lk.ijse.vihangielectronics_ijse_76.dao.custom;
 
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.ProductDto;
+import lk.ijse.vihangielectronics_ijse_76.entity.Product;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface ProductDAO {
+public interface ProductDAO extends CrudDAO<Product> {
     /*public  boolean saveProduct(ProductDto product)throws SQLException,ClassNotFoundException;
     public boolean updateProduct(ProductDto product)throws SQLException ,ClassNotFoundException;
     public boolean deleteProduct(String product)throws SQLException ,ClassNotFoundException;

@@ -3,36 +3,37 @@ package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 import lk.ijse.vihangielectronics_ijse_76.dao.custom.PaymentDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.PaymentDto;
+import lk.ijse.vihangielectronics_ijse_76.entity.Payment;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaymentDAOImpl implements PaymentDAO {
-    public boolean save(PaymentDto paymentDto)throws SQLException, ClassNotFoundException {
+    public boolean save(Payment payment)throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO payment VALUES (?,?,?,?,?,?)";
         return CrudUtil.execute(
                 sql,
-                paymentDto.getPaymentId(),
-                paymentDto.getOrderId(),
-                paymentDto.getDate(),
-                paymentDto.getAmount(),
-                paymentDto.getPaymentMethod(),
-                paymentDto.getStatus()
+                payment.getPaymentId(),
+                payment.getOrderId(),
+                payment.getDate(),
+                payment.getAmount(),
+                payment.getPaymentMethod(),
+                payment.getStatus()
         );
     }
 
-    public boolean update(PaymentDto paymentDto)throws SQLException, ClassNotFoundException {
+    public boolean update(Payment payment)throws SQLException, ClassNotFoundException {
         String sql = "UPDATE payment SET order_id=?, date=?, amount=?, payment_method=?, status=? WHERE payment_id=?";
         return CrudUtil.execute(
               sql,
-              paymentDto.getOrderId(),
-              paymentDto.getDate(),
-              paymentDto.getAmount(),
-              paymentDto.getPaymentMethod(),
-              paymentDto.getStatus(),
-              paymentDto.getPaymentId(),
-              paymentDto.getPaymentId()
+                payment.getOrderId(),
+                payment.getDate(),
+                payment.getAmount(),
+                payment.getPaymentMethod(),
+                payment.getStatus(),
+                payment.getPaymentId(),
+                payment.getPaymentId()
         );
     }
 
@@ -49,12 +50,12 @@ public class PaymentDAOImpl implements PaymentDAO {
         return "";
     }
 
-    public PaymentDto search(String paymentId) throws SQLException, ClassNotFoundException {
+    public Payment search(String paymentId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM payment WHERE payment_id = ?";
         ResultSet rs = CrudUtil.execute(sql, paymentId);
 
         if (rs.next()) {
-            return new PaymentDto(
+            return new Payment(
                     rs.getString("payment_id"),
                     rs.getString("order_id"),
                     rs.getDate("date").toLocalDate(),
@@ -67,14 +68,14 @@ public class PaymentDAOImpl implements PaymentDAO {
         return null;
     }
 
-    public ArrayList<PaymentDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Payment> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM payment";
         ResultSet rs = CrudUtil.execute(sql);
 
-        ArrayList<PaymentDto> paymentList = new ArrayList<>();
+        ArrayList<Payment> paymentList = new ArrayList<>();
 
         while (rs.next()) {
-            paymentList.add(new PaymentDto(
+            paymentList.add(new Payment(
                     rs.getString("payment_id"),
                     rs.getString("order_id"),
                     rs.getDate("date").toLocalDate(),

@@ -2,11 +2,12 @@ package lk.ijse.vihangielectronics_ijse_76.dao.custom;
 
 import lk.ijse.vihangielectronics_ijse_76.dao.CrudDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.SupplierDto;
+import lk.ijse.vihangielectronics_ijse_76.entity.Supplier;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface SupplierDAO extends CrudDAO<SupplierDto> {
+public interface SupplierDAO extends CrudDAO<Supplier> {
     /*public boolean saveSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException;
     public boolean updateSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException;
     public boolean deleteSupplier(String supplierId) throws SQLException, ClassNotFoundException;

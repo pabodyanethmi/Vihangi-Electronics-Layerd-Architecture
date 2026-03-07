@@ -5,7 +5,7 @@ import lk.ijse.vihangielectronics_ijse_76.dto.CustomerDto;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface CrudDAO<T> {
+public interface CrudDAO<T> extends SuperDAO {
     public boolean save(T dto) throws SQLException, ClassNotFoundException;
     public boolean update(T dto) throws SQLException, ClassNotFoundException;
     public boolean delete(String id) throws SQLException, ClassNotFoundException;

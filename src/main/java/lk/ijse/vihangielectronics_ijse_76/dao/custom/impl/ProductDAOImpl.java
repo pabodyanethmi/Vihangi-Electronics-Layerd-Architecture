@@ -3,6 +3,7 @@ package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 import lk.ijse.vihangielectronics_ijse_76.dao.custom.ProductDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.ProductDto;
+import lk.ijse.vihangielectronics_ijse_76.entity.Product;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO {
-    public boolean save(ProductDto product)throws SQLException ,ClassNotFoundException{
+    public boolean save(Product product)throws SQLException ,ClassNotFoundException{
         String sql = "INSERT INTO product (productId,name,quantity,pricePerUnit) VALUES (?,?,?,?)";
         return CrudUtil.execute(
                 sql,
@@ -23,7 +24,7 @@ public class ProductDAOImpl implements ProductDAO {
 
     }
 
-    public boolean update(ProductDto product)throws SQLException ,ClassNotFoundException{
+    public boolean update(Product product)throws SQLException ,ClassNotFoundException{
         String sql = "UPDATE product SET name=?,quantity=?,pricePerUnit=? WHERE productId=?";
         return  CrudUtil.execute(
                 sql,
@@ -34,21 +35,21 @@ public class ProductDAOImpl implements ProductDAO {
         );
     }
 
-    public boolean delete(ProductDto product)throws SQLException ,ClassNotFoundException{
+    public boolean delete(String product)throws SQLException ,ClassNotFoundException{
         String sql = "DELETE FROM product WHERE productId=?";
         return CrudUtil.execute(
                 sql,
-                product.getProductId()
+                product
             );
     }
 
-    public ArrayList<ProductDto> getAll() throws SQLException, ClassNotFoundException {
+    public ArrayList<Product> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rs = CrudUtil.execute("SELECT * FROM product ORDER BY productId DESC");
 
-        ArrayList<ProductDto> productDtoList = new ArrayList<>();
+        ArrayList<Product> productDtoList = new ArrayList<>();
 
         while (rs.next()) {
-            ProductDto productDto = new ProductDto(
+            Product productDto = new Product(
                     rs.getString("productId"),
                     rs.getString("supplierId"),
                     rs.getString("name"),
@@ -60,7 +61,7 @@ public class ProductDAOImpl implements ProductDAO {
         return productDtoList;
     }
 
-    public ProductDto search(String id) throws SQLException, ClassNotFoundException {
+    public Product search(String id) throws SQLException, ClassNotFoundException {
         ResultSet rs =
                 CrudUtil.execute(
                         "SELECT * FROM product WHERE productId=?",
@@ -74,7 +75,7 @@ public class ProductDAOImpl implements ProductDAO {
             int qty = Integer.parseInt(rs.getString("quantity"));
             double pricePerUnit = rs.getDouble("pricePerUnit");
 
-            return new ProductDto(productId,supplierId, name, pricePerUnit,qty);
+            return new Product(productId,supplierId, name, pricePerUnit,qty);
         }
         return null;
     }
