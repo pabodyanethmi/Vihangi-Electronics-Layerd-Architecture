@@ -1,15 +1,14 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.SupplierDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.SupplierDto;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Supplier;
 
-public class SupplierDAOImpl implements SupplierDAO{
+public class SupplierDAOImpl implements SupplierDAO {
     public boolean saveSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Supplier (supplierId, name, contact, email, address) VALUES (?,?,?,?,?)";
         return CrudUtil.execute(

@@ -1,7 +1,8 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.PaymentDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.PaymentDto;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

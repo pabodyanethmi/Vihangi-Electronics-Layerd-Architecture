@@ -10,10 +10,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import lk.ijse.vihangielectronics_ijse_76.dao.SupplierDAO;
-import lk.ijse.vihangielectronics_ijse_76.dao.SupplierDAOImpl;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.SupplierDAO;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.impl.SupplierDAOImpl;
 import lk.ijse.vihangielectronics_ijse_76.dto.SupplierDto;
-import lk.ijse.vihangielectronics_ijse_76.model.SupplierModel;
 
 import java.net.URL;
 import java.util.List;

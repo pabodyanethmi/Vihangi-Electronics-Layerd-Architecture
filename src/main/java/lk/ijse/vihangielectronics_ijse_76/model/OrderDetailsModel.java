@@ -4,7 +4,7 @@ package lk.ijse.vihangielectronics_ijse_76.model;
 
 
 import lk.ijse.vihangielectronics_ijse_76.dto.OrderDetailsDto;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

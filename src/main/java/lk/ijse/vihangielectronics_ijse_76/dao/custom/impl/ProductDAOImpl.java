@@ -1,15 +1,15 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.ProductDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.ProductDto;
-import lk.ijse.vihangielectronics_ijse_76.model.ProductModel;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAOImpl implements ProductDAO{
+public class ProductDAOImpl implements ProductDAO {
     public boolean saveProduct(ProductDto product)throws SQLException ,ClassNotFoundException{
         String sql = "INSERT INTO product (productId,name,quantity,pricePerUnit) VALUES (?,?,?,?)";
         return CrudUtil.execute(

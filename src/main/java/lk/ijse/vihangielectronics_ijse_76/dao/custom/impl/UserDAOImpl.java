@@ -1,14 +1,14 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.UserDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.UserDto;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
     public boolean saveUser(UserDto userDTO) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO user ( userName, password, jobRoll, status,email) VALUES (?,?,?,?,?)";
         return CrudUtil.execute(

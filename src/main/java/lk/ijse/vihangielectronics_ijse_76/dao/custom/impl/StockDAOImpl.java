@@ -1,14 +1,14 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom.impl;
 
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.StockDAO;
 import lk.ijse.vihangielectronics_ijse_76.dto.StockDto;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class StockDAOImpl implements StockDAO{
+public class StockDAOImpl implements StockDAO {
     public boolean saveStock(StockDto stock) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Stock (productId, stockQuantity) VALUES (?,?)";
         return CrudUtil.execute(

@@ -1,4 +1,4 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom;
 
 import lk.ijse.vihangielectronics_ijse_76.dto.UserDto;
 

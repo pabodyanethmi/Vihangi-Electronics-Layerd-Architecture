@@ -1,10 +1,9 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom;
 
 import lk.ijse.vihangielectronics_ijse_76.dto.StockDto;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface StockDAO {
     public  boolean saveStock(StockDto stock) throws SQLException, ClassNotFoundException;

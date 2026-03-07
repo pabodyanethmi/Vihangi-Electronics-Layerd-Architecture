@@ -1,6 +1,6 @@
 package lk.ijse.vihangielectronics_ijse_76.model;
 
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 import lk.ijse.vihangielectronics_ijse_76.dto.SupplierDto;
 
 import java.sql.ResultSet;

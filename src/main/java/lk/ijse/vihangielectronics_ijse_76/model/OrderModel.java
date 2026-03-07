@@ -1,27 +1,13 @@
 package lk.ijse.vihangielectronics_ijse_76.model;
 
-import javafx.collections.ObservableList;
 import lk.ijse.vihangielectronics_ijse_76.db.DBConnection;
 import lk.ijse.vihangielectronics_ijse_76.dto.OrderDetailsDto;
 import lk.ijse.vihangielectronics_ijse_76.dto.OrderDto;
-import lk.ijse.vihangielectronics_ijse_76.dto.tm.CartTM;
-import lk.ijse.vihangielectronics_ijse_76.util.CrudUtil;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.view.JasperViewer;
+import lk.ijse.vihangielectronics_ijse_76.dao.CrudUtil;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class OrderModel {
 

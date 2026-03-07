@@ -1,4 +1,4 @@
-package lk.ijse.vihangielectronics_ijse_76.util;
+package lk.ijse.vihangielectronics_ijse_76.dao;
 
 import lk.ijse.vihangielectronics_ijse_76.db.DBConnection;
 

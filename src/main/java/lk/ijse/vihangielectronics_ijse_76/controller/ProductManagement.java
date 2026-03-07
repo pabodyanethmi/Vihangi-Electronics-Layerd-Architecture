@@ -11,8 +11,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import lk.ijse.vihangielectronics_ijse_76.dao.ProductDAO;
-import lk.ijse.vihangielectronics_ijse_76.dao.ProductDAOImpl;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.ProductDAO;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.impl.ProductDAOImpl;
 import lk.ijse.vihangielectronics_ijse_76.dto.ProductDto;
 import lk.ijse.vihangielectronics_ijse_76.model.ProductModel;
 

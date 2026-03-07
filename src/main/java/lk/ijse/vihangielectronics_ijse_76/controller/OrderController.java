@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.vihangielectronics_ijse_76.dao.CustomerDAOImpl;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.impl.CustomerDAOImpl;
 import lk.ijse.vihangielectronics_ijse_76.dto.CustomerDto;
 import lk.ijse.vihangielectronics_ijse_76.dto.OrderDetailsDto;
 import lk.ijse.vihangielectronics_ijse_76.dto.OrderDto;

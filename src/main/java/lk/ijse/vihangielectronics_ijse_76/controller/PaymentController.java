@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import lk.ijse.vihangielectronics_ijse_76.dao.PaymentDAO;
-import lk.ijse.vihangielectronics_ijse_76.dao.PaymentDAOImpl;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.PaymentDAO;
+import lk.ijse.vihangielectronics_ijse_76.dao.custom.impl.PaymentDAOImpl;
 import lk.ijse.vihangielectronics_ijse_76.dto.PaymentDto;
 
 import java.net.URL;

@@ -1,10 +1,9 @@
-package lk.ijse.vihangielectronics_ijse_76.dao;
+package lk.ijse.vihangielectronics_ijse_76.dao.custom;
 
 import lk.ijse.vihangielectronics_ijse_76.dto.SupplierDto;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 
 public interface SupplierDAO {
     public boolean saveSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException;
