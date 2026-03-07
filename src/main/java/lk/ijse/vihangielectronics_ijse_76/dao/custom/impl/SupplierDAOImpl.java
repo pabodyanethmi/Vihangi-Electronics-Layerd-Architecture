@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SupplierDAOImpl implements SupplierDAO {
-    public boolean saveSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException {
+    public boolean save(SupplierDto dto) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Supplier (supplierId, name, contact, email, address) VALUES (?,?,?,?,?)";
         return CrudUtil.execute(
                 sql,
@@ -21,7 +21,7 @@ public class SupplierDAOImpl implements SupplierDAO {
         );
     }
 
-    public boolean updateSupplier(SupplierDto dto) throws SQLException, ClassNotFoundException {
+    public boolean update(SupplierDto dto) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Supplier SET name=?, contact=?, email=?, address=? WHERE supplierId=?";
         return CrudUtil.execute(
                 sql,
@@ -33,12 +33,12 @@ public class SupplierDAOImpl implements SupplierDAO {
         );
     }
 
-    public boolean deleteSupplier(SupplierDto supplierId) throws SQLException, ClassNotFoundException {
+    public boolean delete(String supplierId) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM Supplier WHERE supplierId=?";
         return CrudUtil.execute(sql, supplierId);
     }
 
-    public SupplierDto searchSupplier(String supplierId) throws SQLException, ClassNotFoundException {
+    public SupplierDto search(String supplierId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Supplier WHERE supplierId=?";
         ResultSet rs = CrudUtil.execute(sql, supplierId);
 
@@ -54,7 +54,7 @@ public class SupplierDAOImpl implements SupplierDAO {
         return null;
     }
 
-    public ArrayList<SupplierDto> getAllSuppliers() throws SQLException, ClassNotFoundException {
+    public ArrayList<SupplierDto> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Supplier";
         ResultSet rs = CrudUtil.execute(sql);
 
@@ -72,7 +72,7 @@ public class SupplierDAOImpl implements SupplierDAO {
 
     }
 
-    public String getLastSupplierId() throws SQLException, ClassNotFoundException {
+    public String getLastId() throws SQLException, ClassNotFoundException {
         String sql = "SELECT supplierId FROM Supplier ORDER BY supplierId DESC LIMIT 1";
         ResultSet rs = CrudUtil.execute(sql);
 

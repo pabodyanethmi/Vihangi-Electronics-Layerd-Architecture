@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class PaymentDAOImpl implements PaymentDAO {
-    public boolean savePayment(PaymentDto paymentDto)throws SQLException, ClassNotFoundException {
+    public boolean save(PaymentDto paymentDto)throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO payment VALUES (?,?,?,?,?,?)";
         return CrudUtil.execute(
                 sql,
@@ -22,7 +22,7 @@ public class PaymentDAOImpl implements PaymentDAO {
         );
     }
 
-    public boolean updatePayment(PaymentDto paymentDto)throws SQLException, ClassNotFoundException {
+    public boolean update(PaymentDto paymentDto)throws SQLException, ClassNotFoundException {
         String sql = "UPDATE payment SET order_id=?, date=?, amount=?, payment_method=?, status=? WHERE payment_id=?";
         return CrudUtil.execute(
               sql,
@@ -36,7 +36,7 @@ public class PaymentDAOImpl implements PaymentDAO {
         );
     }
 
-    public boolean deletePayment(String id)throws SQLException, ClassNotFoundException {
+    public boolean delete(String id)throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM payment WHERE payment_id=?";
         return CrudUtil.execute(
                 sql, id
@@ -44,9 +44,12 @@ public class PaymentDAOImpl implements PaymentDAO {
 
     }
 
-    public PaymentDto searchPayment(String paymentId)
-            throws SQLException, ClassNotFoundException {
+    @Override
+    public String getLastId() throws SQLException, ClassNotFoundException {
+        return "";
+    }
 
+    public PaymentDto search(String paymentId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM payment WHERE payment_id = ?";
         ResultSet rs = CrudUtil.execute(sql, paymentId);
 
@@ -64,9 +67,7 @@ public class PaymentDAOImpl implements PaymentDAO {
         return null;
     }
 
-    public ArrayList<PaymentDto> getAllPayments()
-            throws SQLException, ClassNotFoundException {
-
+    public ArrayList<PaymentDto> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM payment";
         ResultSet rs = CrudUtil.execute(sql);
 

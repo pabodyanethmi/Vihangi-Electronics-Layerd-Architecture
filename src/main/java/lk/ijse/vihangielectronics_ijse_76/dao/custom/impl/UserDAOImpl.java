@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class UserDAOImpl implements UserDAO {
-    public boolean saveUser(UserDto userDTO) throws SQLException, ClassNotFoundException {
+    public boolean save(UserDto userDTO) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO user ( userName, password, jobRoll, status,email) VALUES (?,?,?,?,?)";
         return CrudUtil.execute(
                 sql,
@@ -22,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
         );
     }
 
-    public boolean updateUser(UserDto userDTO) throws SQLException, ClassNotFoundException {
+    public boolean update(UserDto userDTO) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE user SET userName=?, password=?, jobRoll=?, status=? WHERE email=?";
         return CrudUtil.execute(
                 sql,
@@ -34,12 +34,17 @@ public class UserDAOImpl implements UserDAO {
         );
     }
 
-    public boolean deleteUser(UserDto userId) throws SQLException, ClassNotFoundException {
+    public boolean delete(String userId) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM User WHERE user_id=?";
         return CrudUtil.execute(sql, userId);
     }
 
-    public UserDto SearchUser(String userId) throws SQLException, ClassNotFoundException {
+    @Override
+    public String getLastId() throws SQLException, ClassNotFoundException {
+        return "";
+    }
+
+    public UserDto search(String userId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM User WHERE user_id=?";
         ResultSet rs = CrudUtil.execute(sql, userId);
 
@@ -55,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
         return null;
     }
 
-    public ArrayList<UserDto> getAllUsers() throws SQLException, ClassNotFoundException {
+    public ArrayList<UserDto> getAll() throws SQLException, ClassNotFoundException {
         ResultSet rs = CrudUtil.execute("SELECT * FROM User");
         ArrayList<UserDto> userList = new ArrayList<>();
 

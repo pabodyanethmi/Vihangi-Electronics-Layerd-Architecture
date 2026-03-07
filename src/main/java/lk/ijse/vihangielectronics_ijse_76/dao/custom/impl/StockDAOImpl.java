@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class StockDAOImpl implements StockDAO {
-    public boolean saveStock(StockDto stock) throws SQLException, ClassNotFoundException {
+    public boolean save(StockDto stock) throws SQLException, ClassNotFoundException {
         String sql = "INSERT INTO Stock (productId, stockQuantity) VALUES (?,?)";
         return CrudUtil.execute(
                 sql,
@@ -18,7 +18,7 @@ public class StockDAOImpl implements StockDAO {
         );
     }
 
-    public boolean updateStock(StockDto stock) throws SQLException, ClassNotFoundException {
+    public boolean update(StockDto stock) throws SQLException, ClassNotFoundException {
         String sql = "UPDATE Stock SET stockQuantity=? WHERE productId=?";
         return CrudUtil.execute(
                 sql,
@@ -27,12 +27,12 @@ public class StockDAOImpl implements StockDAO {
         );
     }
 
-    public boolean deleteStock(StockDto productId) throws SQLException, ClassNotFoundException {
+    public boolean delete(String productId) throws SQLException, ClassNotFoundException {
         String sql = "DELETE FROM Stock WHERE productId=?";
         return CrudUtil.execute(sql, productId);
     }
 
-    public StockDto searchStock(String productId) throws SQLException, ClassNotFoundException {
+    public StockDto search(String productId) throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Stock WHERE productId=?";
         ResultSet rs = CrudUtil.execute(sql, productId);
 
@@ -45,7 +45,7 @@ public class StockDAOImpl implements StockDAO {
         }
         return null;
     }
-    public ArrayList<StockDto> getAllStocks() throws SQLException, ClassNotFoundException {
+    public ArrayList<StockDto> getAll() throws SQLException, ClassNotFoundException {
         String sql = "SELECT * FROM Stock ORDER BY stockId DESC";
         ResultSet rs = CrudUtil.execute(sql);
 
@@ -61,7 +61,7 @@ public class StockDAOImpl implements StockDAO {
         }
         return stockList;
     }
-   public String generateNextStockId() throws SQLException, ClassNotFoundException {
+   public String getLastId() throws SQLException, ClassNotFoundException {
        ResultSet rs = CrudUtil.execute("SELECT stockId FROM Stock ORDER BY stockId DESC LIMIT 1");
 
        if (rs.next()) {
