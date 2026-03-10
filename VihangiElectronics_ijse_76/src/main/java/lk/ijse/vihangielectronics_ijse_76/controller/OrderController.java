@@ -135,15 +135,15 @@ public class OrderController implements Initializable {
             boolean isPlaced = orderBO.placeOrder(order);
 
             if (isPlaced) {
-                showAlert(Alert.AlertType.INFORMATION, "Quotation placed successfully!");
+                showAlert(Alert.AlertType.INFORMATION, "Order placed successfully!");
                 resetPage();
             } else {
-                showAlert(Alert.AlertType.ERROR, "Failed to place quotation!");
+                showAlert(Alert.AlertType.ERROR, "Failed to place order!");
             }
 
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert(Alert.AlertType.ERROR, "Error placing quotation!");
+            showAlert(Alert.AlertType.ERROR, "Error placing order!");
         }
     }
 

@@ -12,7 +12,7 @@ import java.util.List;
 
 public class ProductDAOImpl implements ProductDAO {
     public boolean save(Product product)throws SQLException ,ClassNotFoundException{
-        String sql = "INSERT INTO product (productId,name,quantity,pricePerUnit) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO product (productId,name,qty,pricePerUnit) VALUES (?,?,?,?)";
         return CrudUtil.execute(
                 sql,
                 product.getProductId(),
@@ -24,7 +24,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     public boolean update(Product product)throws SQLException ,ClassNotFoundException{
-        String sql = "UPDATE product SET name=?,quantity=?,pricePerUnit=? WHERE productId=?";
+        String sql = "UPDATE product SET name=?,qty=?,pricePerUnit=? WHERE productId=?";
         return  CrudUtil.execute(
                 sql,
                 product.getName(),
@@ -53,7 +53,7 @@ public class ProductDAOImpl implements ProductDAO {
                     rs.getString("supplierId"),
                     rs.getString("name"),
                     rs.getDouble("pricePerUnit"),
-                    rs.getInt("quantity")
+                    rs.getInt("qty")
             );
             productDtoList.add(productDto);
         }
@@ -71,7 +71,7 @@ public class ProductDAOImpl implements ProductDAO {
             String productId = rs.getString("productId");
             String supplierId = rs.getString("supplierId");
             String name = rs.getString("name");
-            int qty = Integer.parseInt(rs.getString("quantity"));
+            int qty = Integer.parseInt(rs.getString("qty"));
             double pricePerUnit = rs.getDouble("pricePerUnit");
 
             return new Product(productId,supplierId, name, pricePerUnit,qty);
@@ -94,7 +94,7 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     public boolean stockUpdate(String itemId, int quantity) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE product SET quantity = quantity - ? WHERE productId = ?";
+        String sql = "UPDATE product SET qty = qty - ? WHERE productId = ?";
         return CrudUtil.execute(sql,quantity, itemId);
     }
 }

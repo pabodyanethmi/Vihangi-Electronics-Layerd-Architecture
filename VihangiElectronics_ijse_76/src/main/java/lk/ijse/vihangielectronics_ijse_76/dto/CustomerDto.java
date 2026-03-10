@@ -6,12 +6,11 @@ import lombok.*;
 @Getter
 @Setter
 public class CustomerDto {
-
     private String customerId;
     private String name;
     private String contact;
     private String email;
-    private String  address;
+    private String address;
 
     @Override
     public String toString() {

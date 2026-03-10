@@ -113,8 +113,7 @@ public class ProductManagement implements Initializable {
                 productDto.setQuantity(Integer.parseInt(qty));
                 productDto.setPricePerUnit(Double.parseDouble(unitPrice));
 
-
-                boolean result = productBO.saveProduct(productDto);
+                boolean result = productBO.updateProduct(productDto);
                 if (result) {
                     new Alert(Alert.AlertType.INFORMATION, "Product saved successfully!").show();
                     clearFields();

@@ -227,5 +227,4 @@ public class CustomerController implements Initializable {
             addressField.setText(selectedCustomer.getAddress());
         }
     }
-
 }
