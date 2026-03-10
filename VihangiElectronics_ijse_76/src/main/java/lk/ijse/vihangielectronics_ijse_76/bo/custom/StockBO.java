@@ -1,0 +1,16 @@
+package lk.ijse.vihangielectronics_ijse_76.bo.custom;
+
+import lk.ijse.vihangielectronics_ijse_76.bo.SuperBO;
+import lk.ijse.vihangielectronics_ijse_76.dto.StockDto;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public interface StockBO extends SuperBO {
+    public boolean saveStock(StockDto stock) throws SQLException, ClassNotFoundException;
+    public boolean updateStock(StockDto stock) throws SQLException, ClassNotFoundException;
+    public boolean deleteStock(String productId) throws SQLException, ClassNotFoundException;
+    public StockDto searchStock(String productId) throws SQLException, ClassNotFoundException;
+    public ArrayList<StockDto> getAllStocks() throws SQLException, ClassNotFoundException;
+    public String generateNextStockId() throws SQLException, ClassNotFoundException;
+}
